@@ -1,8 +1,20 @@
 package com.vijay.roomwebapp.roomwebapp.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "ROOM")
 public class Room {
+    @Id
+    @Column(name = "ROOM_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(name = "ROOM_NUMBER")
     private String number;
+    @Column(name = "NAME")
+    private String name;
+    @Column(name = "BED_INFO")
+    private String info;
 
     public Room(long id, String number, String name, String info) {
         this.id = id;
@@ -13,8 +25,6 @@ public class Room {
 
     public Room() {
     }
-
-    private String name;
 
     public long getId() {
         return id;
@@ -48,5 +58,4 @@ public class Room {
         this.info = info;
     }
 
-    private String info;
 }

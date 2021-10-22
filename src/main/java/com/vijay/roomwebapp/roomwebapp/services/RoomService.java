@@ -3,21 +3,19 @@ package com.vijay.roomwebapp.roomwebapp.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.vijay.roomwebapp.roomwebapp.data.RoomRepository;
 import com.vijay.roomwebapp.roomwebapp.models.Room;
 import org.springframework.stereotype.Service;
 
 @Service
 public class RoomService {
 
-    private static final List<Room> rooms = new ArrayList();
+    private final RoomRepository roomRepository;
 
-    static{
-        for(int i=0;i<10;i++){
-            rooms.add(new Room(i, "Room " + i, "R"+i, "Q"));
-        }
+    public RoomService(RoomRepository roomRepository) {
+        this.roomRepository = roomRepository;
     }
-
     public List<Room> getAllRooms(){
-        return rooms;
+        return roomRepository.findAll();
     }
 }
